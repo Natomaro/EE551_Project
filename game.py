@@ -648,4 +648,4 @@ def Save_game():
 
 ## This function needs to either be called in another script or command line or uncommented to run.
 ## It must be commented out for pytest to run properly.
-Main_menu()
+#Main_menu()
