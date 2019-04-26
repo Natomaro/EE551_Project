@@ -1,6 +1,8 @@
 # EE551_Project - Python Educational Game
 ## Before you run the game
-Before you run, make sure you read the readme on how to ensure the game is loaded correctly. I've provided a save file that I've been using for testing because it is a little better than the starting profile. If you want to start completely over, delete the save_file.csv from your local directory.
+1) Before you run, make sure you read the readme on how to ensure the game is loaded correctly. I've provided a save file that I've been using for testing because it is a little better than the starting profile. If you want to start completely over, delete the save_file.csv from your local directory.
+2) Make sure you open up the game.py and ensure you have all the required packages installed. The only one that is not commonly installed by default is the python csv package.
+#### 3) You have to run the game by running execute_game.py. The actual game is under game.py. But because pytest requires there be no functions running in the bulk code of the game, I've made another script for actually playing. All it does is run game.py Main menu() and the game goes from there. 
  
 ## Introduction
 Adventure video games have been popular since their inception 30 years ago! Although in this day and age, these games have remarkable graphics and enormous worlds. But in their humble beginnings, adventure games were text-based.
