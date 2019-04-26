@@ -149,7 +149,7 @@ class Player():
         elif "Armor" in loot_string:
             if "Empty Slot" in self.player_armor_inventory:
                 self.player_armor_inventory.remove("Empty Slot")
-                self.player_armor_inventory.append(loot)
+                self.player_armor_inventory.append(loot_string)
                 return self.player_armor_inventory 
             else:
                 print("Armor Inventory Full! Can't add more!")
