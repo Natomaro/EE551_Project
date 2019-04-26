@@ -127,7 +127,7 @@ class Player():
         elif "Scroll" in loot_string:
             #Spells are a set instead of list so all entries are unique (e.g. if you get two Scrolls of Fireball, Fireball should only appear in the spell list once)
             loot = loot_string.split('of ')[-1]
-            print(loot)
+            #print(loot)
             if len(self.player_spell_list)<4:
                 self.player_spell_list.remove("Empty Slot")
                 self.player_spell_list.add(loot)
@@ -182,6 +182,7 @@ whitelist = set(',abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ012345678
 ## Dictionary of Sword types to their respective power
 ## This is used because Sword_equipped is stored as a string. This dict maps that to a numerical strength.
 Sword_power = {
+    "Empty Slot": 0,
     "Wood Sword": 10,
     "Iron Sword": 20,
     "Steel Sword": 30,
@@ -193,6 +194,7 @@ Sword_power = {
 ## Dictionary of Armor types to their respective armor rating
 ## This is used because Armor_equipped is stored as a string. This dict maps that to a numerical resist factor.
 Armor_armor = {
+    "Empty Slot": 0,
     "Iron Armor": 5,
     "Steel Armor": 10,
     "Magic Armor": 15,
@@ -268,7 +270,7 @@ def Battle():
                 
                 ## Check if the enemy died. If so, generate rewards and move on.
                 if current_enemy.enemy_health <= 0: 
-                    exp,loot = generate_rewards(current_enemy)
+                    exp = generate_rewards(current_enemy)
                     
                     break
 
@@ -300,7 +302,7 @@ def Battle():
                 enemy_attacks(current_enemy,enemy_sword,player,player_armor)
             else:
                 break
-    return loot
+    return exp
 
         
 ## Use item function. Prints out the player's potion counts and allows them to select one. The proper effect is applied.
@@ -395,7 +397,7 @@ def generate_rewards(current_enemy):
     player.inventory(loot_string)
 
     ## return the loot string. Mostly for pytest testing.
-    return exp, loot_string
+    return exp
 
 ## The function that controls the main menu of the game. All it does is present your current info and then call the proper function based on your choice. 
 
@@ -615,11 +617,23 @@ def Shop():
                     player.player_weapon_inventory.remove(item_to_sell)
                     player.player_weapon_inventory.append("Empty Slot")
                     player.gold_count += price_dictionary[item_to_sell]
-                else:
+
+                    if player.player_sword_equipped == item_to_sell:
+                        player.player_sword_equipped="Empty Slot"
+
+
+                elif "Armor" in item_to_sell:
                     player.player_armor_inventory.remove(item_to_sell)
                     player.player_armor_inventory.append("Empty Slot")
                     player.gold_count += price_dictionary[item_to_sell]
+
+                    if player.player_armor_equipped == item_to_sell:
+                        player.player_armor_equipped="Empty Slot"
+
+
                 print("\nSold " + item_to_sell + " for " +str(price_dictionary[item_to_sell]))
+
+
             else:
                 print("Invalid Choice")
         else:

@@ -94,8 +94,7 @@ def test_enemy_health():
 def test_normal_attack():
     player.player_strength=100 #ensure I can win the battle for testing.
     with mock.patch.object(builtins, 'input', lambda _:'1'):
-        assert((game.Battle() in ['Scroll of Fireball', 'Scroll of Ice Beam', 'Iron Sword', 'Steel Sword', 'Adamantium Sword', 'Iron Armor', 'Steel Armor', 'Adamantium Armor']) or "gold pieces" in game.Battle()==True)
-
+        assert((7<=game.Battle() <= 17))
 
 ## Use item - directly tests the function named use_item() which is called in Battle() or main menu()
 ## Forces a '1' input which triggers. health potion. The player's health should increase by 25 HP then.
@@ -146,7 +145,7 @@ def test_gen_rewards():
 
     test_enemy = game.Enemy()
     test_enemy.enemy_strength = 15
-    assert (game.generate_rewards(test_enemy)[0]==20)
+    assert (game.generate_rewards(test_enemy)==20)
 
 
 ## The remaining pieces of the game are very difficult to develop pytest codes for them. Most of them either have
