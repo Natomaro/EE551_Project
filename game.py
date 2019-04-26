@@ -650,11 +650,10 @@ def Save_game():
         write = csv.writer(sf)
 
       
-        complete_save_file = [player.player_strength,player.player_health,player.player_mana,player.gold_count]+player.player_weapon_inventory+[player.player_sword_equipped]+player.player_armor_inventory+[player.player_armor_equipped]+spells+player.player_selected_spells+[player.player_items["Health Potion"]["count"]]+[player.player_items["Mana Potion"]["count"]]+[player.player_exp,player.player_level,player.until_next_level]
+        complete_save_file = [player.player_strength,player.player_health,player.player_mana,player.gold_count]+player.player_weapon_inventory+[player.player_sword_equipped]+player.player_armor_inventory+[player.player_armor_equipped]+list(player.player_spell_list)+player.player_selected_spells+[player.player_items["Health Potion"]["count"]]+[player.player_items["Mana Potion"]["count"]]+[player.player_exp,player.player_level,player.until_next_level]
         print(complete_save_file)    
         write.writerow(complete_save_file)
 
-        return complete_save_file
     sys.exit()
 
 ## Call the Main menu function to run the game. All other functions and methods are called accordingly.
