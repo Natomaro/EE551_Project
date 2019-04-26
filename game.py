@@ -367,12 +367,12 @@ def enemy_attacks(current_enemy,enemy_sword,player,player_armor):
         if player.player_health <= 0:
             print("\nYou died! Rerun the game to start over from your last save!")
             sys.exit()
-
+        return damage_confirm   
     else:
         print("Enemy is frozen still!")
-        pass
+        return 
     ## return the player's health. This is primarily used for pytest checks. The actual player health lies in the player.Player() instance
-    return damage_confirm
+    
 
 
 ## Generate the rewards function. Should pick a random prize and award exp.
