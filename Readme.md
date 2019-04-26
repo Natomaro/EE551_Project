@@ -30,5 +30,5 @@ Use classes and inheritance to make player and enemy instances
 Build functions that take a user's inputs to execute battle, loadout, item, and shop sequences.
 Import csv package for python to enable a save game feature.
 Play test the game and build a pytest file to test a lot of the game in a single script.
-Author
+## Author
 Nick Tomaro
