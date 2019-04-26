@@ -131,7 +131,7 @@ class Player():
             if len(self.player_spell_list)<4:
                 self.player_spell_list.remove("Empty Slot")
                 self.player_spell_list.add(loot)
-                return self.player_spell_list
+                #return self.player_spell_list
             else:
                 print("Spell Slots full!")
 
